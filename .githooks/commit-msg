@@ -1,0 +1,10 @@
+
+#!/bin/bash
+# Проверка сообщения коммита по Conventional Commits:
+regex="^(feat|fix|docs|style|refactor|perf|test|chore)(\([a-zA-Z0-9]+\))?: .+"
+if ! grep -qE "$regex" "$1"; then
+    echo "Ошибка: сообщение коммита не соответствует Conventional Commits."
+    echo "Пример: feat(parser): add ability to parse arrays"
+    exit 1
+fi
+
