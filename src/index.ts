@@ -1,14 +1,13 @@
-import { Character } from "./Character";
-import { MOVING_TYPE } from "./types/MOVING_TYPE";
+import Character from './Character';
+import MovingType from './types/MovingType';
 
-const person = new Character(MOVING_TYPE.GO);
-console.log(person.move(5)); 
-person.toRide();
-console.log(person.move(5));
-person.toFly();
-console.log(person.move(5));
-person.attack();
-console.log(person.move(5));
-person.toEat();
-console.log(person.move(5));
-person.toCast();
+function main(): void {
+  const person = new Character(MovingType.Go);
+  person.move(5);
+  person.toRide();
+  person.move(5);
+  person.toFly();
+  person.move(5);
+}
+
+main();

@@ -1,26 +1,41 @@
-import { IMovingState } from "../types/IMovingState";
+import MovingType from '../types/MovingType';
+import { IStateFactory } from '../factory/IStateFactory';
+import {IMovingState} from '../types/IMovingState';
 
-export abstract class AbstractState implements IMovingState {
-    abstract canAttack(): boolean
-    abstract getMovingAccelerator(): number
+export default abstract class AbstractState implements IMovingState {
+  protected factory: IStateFactory;
+  protected type: MovingType;
 
-    toGo(): IMovingState {
-        throw new Error('Not allowed')
-    }
+  constructor(type: MovingType, factory: IStateFactory) {
+    this.type = type;
+    this.factory = factory;
+  }
 
-    toRide(): IMovingState {
-        throw new Error('Not allowed')
-    }
+  canAttack(): boolean {
+    return this.type === MovingType.Go;
+  }
 
-    toFly(): IMovingState {
-        throw new Error('Not allowed')
-    }
+  getMovingAccelerator(): number {
+    return 1;
+  }
 
-    toEat(): IMovingState {
-        throw new Error("Not allowed");
-    }
+  toGo(): IMovingState {
+    throw new Error('Not allowed');
+  }
 
-    toCast(): IMovingState {
-        throw new Error("Not allowed");
-    }
+  toRide(): IMovingState {
+    throw new Error('Not allowed');
+  }
+
+  toFly(): IMovingState {
+    throw new Error('Not allowed');
+  }
+
+  toEat(): IMovingState {
+    throw new Error('Not allowed');
+  }
+
+  toCast(): IMovingState {
+    throw new Error('Not allowed');
+  }
 }

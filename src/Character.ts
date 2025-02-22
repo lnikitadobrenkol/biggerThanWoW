@@ -1,46 +1,45 @@
-import { MOVING_TYPE } from "./types/MOVING_TYPE";
-import { IMovingState } from "./types/IMovingState";
-import { Go } from "./states/Go";
+import MovingType from './types/MovingType';
+import StateFactory from './factory/StateFactory';
+import { IMovingState } from './types/IMovingState';
 
-export class Character {
-    private state: IMovingState;
+export default class Character {
+  private state: IMovingState;
 
-    public constructor(stateType = MOVING_TYPE.GO) {
-        this.state = new Go();
+  private factory: StateFactory;
+
+  constructor(initialType: MovingType = MovingType.Go) {
+    this.factory = new StateFactory();
+    // Use factory to create initial state
+    this.state = this.factory.createStateForType(initialType);
+  }
+
+  move(distance: number): number {
+    return distance * this.state.getMovingAccelerator();
+  }
+
+  toLand(): void {
+    this.state = this.state.toGo();
+  }
+
+  toRide(): void {
+    this.state = this.state.toRide();
+  }
+
+  toFly(): void {
+    this.state = this.state.toFly();
+  }
+
+  toEat(): void {
+    this.state = this.state.toEat();
+  }
+
+  toCast(): void {
+    this.state = this.state.toCast();
+  }
+
+  attack(): void {
+    if (!this.state.canAttack()) {
+      throw new Error('Cannot attack now');
     }
-
-    public move(x: number) {
-        return x * this.state.getMovingAccelerator()
-    }
-
-    public toLanded() {
-        console.log('Going')
-        this.state = this.state.toGo()
-    }
-
-    public toFly() {
-        console.log('Flying')
-        this.state = this.state.toFly()
-    }
-
-    public toRide() {
-        console.log('Riding')
-        this.state = this.state.toRide()
-    }
-
-    public attack() {
-        if (this.state.canAttack()) {
-            throw new Error('Cannot attack now')
-        }
-    }
-
-    public toEat() {
-        console.log("Eating");
-        this.state = this.state.toEat();
-    }
-
-    public toCast() {
-        console.log("Casting");
-        this.state = this.state.toCast();
-    }
+  }
 }
