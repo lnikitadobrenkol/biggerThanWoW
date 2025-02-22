@@ -1,11 +1,9 @@
-
 #!/bin/bash
-# Проверка имени ветки: feature/xxx, bugfix/xxx, hotfix/xxx, release/xxx
+# Check branch name: feature/xxx, bugfix/xxx, hotfix/xxx, release/xxx
 branch_name=$(git symbolic-ref --short HEAD)
-regex="^(feature|bugfix|hotfix|release)\/[a-z0-9\-_]+$"
+regex="^(feature|bugfix|hotfix|release|develop)(\/[a-z0-9\-_]+)?$"
 if ! echo "$branch_name" | grep -qE "$regex"; then
-    echo "Ошибка: имя ветки '$branch_name' не соответствует шаблону."
-    echo "Используйте: feature/xxx, bugfix/xxx, hotfix/xxx, release/xxx"
+    echo "Error: branch name '$branch_name' does not match the required pattern."
+    echo "Please use: feature/xxx, bugfix/xxx, hotfix/xxx, release/xxx"
     exit 1
 fi
-
