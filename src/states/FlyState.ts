@@ -8,12 +8,14 @@ export default class FlyState extends AbstractState {
     super(MovingType.Fly, factory);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   canAttack(): boolean {
-    return this.type !== MovingType.Eat;
+    return false;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getMovingAccelerator(): number {
-    return this.type === MovingType.Fly ? 0 : 2;
+    return 2;
   }
 
   toRide(): IMovingState {

@@ -33,10 +33,6 @@ export default class Character {
     this.state = this.state.toEat();
   }
 
-  toCast(): void {
-    this.state = this.state.toCast();
-  }
-
   attack(): void {
     if (!this.state.canAttack()) {
       throw new Error('Cannot attack now');

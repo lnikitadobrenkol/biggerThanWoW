@@ -8,11 +8,13 @@ export default class RideState extends AbstractState {
     super(MovingType.Ride, factory);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   canAttack(): boolean {
-    return this.type !== MovingType.Eat;
+    return false;
   }
 
-  static getMovingAccelerator(): number {
+  // eslint-disable-next-line class-methods-use-this
+  getMovingAccelerator(): number {
     return 1.5;
   }
 

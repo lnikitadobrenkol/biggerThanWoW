@@ -6,5 +6,4 @@ export interface IMovingState {
   toRide(): IMovingState;
   toFly(): IMovingState;
   toEat(): IMovingState;
-  toCast(): IMovingState;
 }

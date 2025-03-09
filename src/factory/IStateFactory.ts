@@ -6,6 +6,5 @@ export interface IStateFactory {
   createRideState(): IMovingState;
   createFlyState(): IMovingState;
   createEatState(): IMovingState;
-  createCastState(): IMovingState;
   createStateForType(type: MovingType): IMovingState;
 }

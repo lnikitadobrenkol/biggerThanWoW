@@ -8,11 +8,13 @@ export default class GoState extends AbstractState {
     super(MovingType.Go, factory);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   canAttack(): boolean {
-    return this.type === MovingType.Go;
+    return true;
   }
 
-  static getMovingAccelerator(): number {
+  // eslint-disable-next-line class-methods-use-this
+  getMovingAccelerator(): number {
     return 1;
   }
 

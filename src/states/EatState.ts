@@ -7,11 +7,13 @@ export default class EatState extends AbstractState {
     super(MovingType.Eat, factory);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   canAttack(): boolean {
-    return this.type !== MovingType.Eat;
+    return false;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getMovingAccelerator(): number {
-    return this.type === MovingType.Eat ? 0 : 1;
+    return 0;
   }
 }

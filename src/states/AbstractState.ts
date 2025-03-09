@@ -38,8 +38,4 @@ export default abstract class AbstractState implements IMovingState {
   toEat(): IMovingState {
     throw new Error(`Cannot transition to Eat from state: ${this.type}`);
   }
-
-  toCast(): IMovingState {
-    throw new Error(`Cannot transition to Cast from state: ${this.type}`);
-  }
 }

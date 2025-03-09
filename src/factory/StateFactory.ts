@@ -4,28 +4,23 @@ import GoState from '../states/GoState';
 import RideState from '../states/RideSate';
 import FlyState from '../states/FlyState';
 import EatState from '../states/EatState';
-import CastState from '../states/CastState';
 import MovingType from '../types/MovingType';
 
 export default class StateFactory implements IStateFactory {
-  createGoState(): IMovingState {
+  createGoState(): GoState {
     return new GoState(this);
   }
 
-  createRideState(): IMovingState {
+  createRideState(): RideState {
     return new RideState(this);
   }
 
-  createFlyState(): IMovingState {
+  createFlyState(): FlyState {
     return new FlyState(this);
   }
 
-  createEatState(): IMovingState {
+  createEatState(): EatState {
     return new EatState(this);
-  }
-
-  createCastState(): IMovingState {
-    return new CastState(this);
   }
 
   createStateForType(type: MovingType): IMovingState {
@@ -33,7 +28,6 @@ export default class StateFactory implements IStateFactory {
       case MovingType.Ride: return this.createRideState();
       case MovingType.Fly: return this.createFlyState();
       case MovingType.Eat: return this.createEatState();
-      case MovingType.Cast: return this.createCastState();
       case MovingType.Go: return this.createGoState();
       default:
         return this.createGoState();
