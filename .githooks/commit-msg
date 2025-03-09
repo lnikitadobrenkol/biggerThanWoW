@@ -1,8 +1,0 @@
-#!/bin/bash
-# Check commit message according to Conventional Commits:
-regex="^(feat|fix|docs|style|refactor|perf|test|chore)(\([a-zA-Z0-9]+\))?: .+"
-if ! grep -qE "$regex" "$1"; then
-    echo "Error: commit message does not match Conventional Commits."
-    echo "Example: feat(parser): add ability to parse arrays"
-    exit 1
-fi
